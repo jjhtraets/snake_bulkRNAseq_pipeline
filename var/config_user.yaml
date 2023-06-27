@@ -1,0 +1,6 @@
+bam_to_fastq_r: 'False'
+input_folder: /DATA/j.traets/Pipelines/RNAseq_snakemake_pipeline_v2_1/test_input_output/test_data/paired_fastq/
+kallisto_strand: ''
+output_folder: /DATA/j.traets/Pipelines/RNAseq_snakemake_pipeline_v2_1/test_input_output/output/
+reads: paired
+strandedness: 'yes'
