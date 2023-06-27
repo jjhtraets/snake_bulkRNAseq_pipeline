@@ -73,6 +73,7 @@ Sample files should contain the column name "sample_ID".
 - June 2022, added RSEM (direct TPM quantification) & STAR-fusion rules
 
 ### TODO
+- add slurm options
 - add docker for MiXCR/vdjtools
 - integrate trimming, RSEM and STAR-fusion 
 - fix bam > fastq rules
