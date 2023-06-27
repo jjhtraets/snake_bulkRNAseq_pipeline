@@ -78,5 +78,3 @@ Sample files should contain the column name "sample_ID".
 - integrate trimming, RSEM and STAR-fusion 
 - fix bam > fastq rules
 
-### Gitlab
-https://gitlab.rhpc.nki.nl/j.traets/snakemake_rnaseq_pipeline_sr
