@@ -10,6 +10,7 @@ Output: Counts (HTSeq), QC (fastqc, multiqc on fastqs), strandedness (NGSderive)
 
 Optional, not integrated(!): Trimming (Trim Galore), Fusions (STAR fusion), TPM quantitative (RSEM)
 
+## work in process! See ##
 
 ## Prepare sif containers
 - via "Buid_sif_containers.py" (default package versions used in RNAseq pipeline 23/06)
