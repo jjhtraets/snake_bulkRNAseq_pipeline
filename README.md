@@ -13,7 +13,7 @@ Optional, not integrated(!): Trimming (Trim Galore), Fusions (STAR fusion), TPM 
 ## work in process! See TODOs ##
 
 ## Prepare sif containers
-- via "Buid_sif_containers.py" (default package versions used in RNAseq pipeline 23/06)
+- via `Buid_sif_containers.py` (default package versions used in RNAseq pipeline 23/06)
 - or build your own sif containers with selfbuild or pulled docker images
 
 
