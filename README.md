@@ -1,4 +1,4 @@
-# RNAseq pipeline
+# RNAseq pipeline (snakemake)
 version v2.1 (singularity/conda)
 updated, June 2023
 
