@@ -59,7 +59,7 @@ python Run_RNApipeline.py $PATH_INPUT $PATH_OUTPUT -r paired -s yes
 `config/config.yaml`
 `var/config.yaml`
 3. run snakemake in snakemake RNAseq pipeline folder, adjust amount of cores
-e.g. 
+etc. 
 ```bash
 snakemake --use-conda --use-singularity --singularity-args "-B $PATH_INPUT -B $PATH_OUTPUT -B $PATH_REF" --cores 1 -k
 ```
