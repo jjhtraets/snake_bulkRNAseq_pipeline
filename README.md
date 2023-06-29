@@ -2,11 +2,11 @@
 version v2.1 (singularity/conda)
 updated, June 2023
 
-Input: paired end  reads, fastq or bam files, bulk RNAseq data
-Output: Counts (STAR & HTSeq), TPM (Kallisto), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools)
+Input: paired end  reads, fastq or bam files, bulk RNAseq data.
+Output: Counts (STAR & HTSeq), TPM (Kallisto), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
 
-Input: single reads, fastq or bam files, RNAseq data
-Output: Counts (STAR & HTSeq), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools)
+Input: single reads, fastq or bam files, RNAseq data.
+Output: Counts (STAR & HTSeq), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
 
 Optional, not integrated(!): Trimming (Trim Galore), Fusions (STAR fusion), TPM quantitative (RSEM)
 
