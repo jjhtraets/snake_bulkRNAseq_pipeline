@@ -8,7 +8,7 @@ Output: Counts (STAR & HTSeq), expression (Kallisto & RSEM), QC (fastqc & multiq
 Input: single reads, fastq or bam files, RNAseq data.
 Output: Counts (STAR & HTSeq), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
 
-Optional, not integrated(!): Trimming (Trim Galore), Fusions (STAR fusion), TPM quantitative (RSEM)
+Optional, not integrated(!): Trimming (Trim Galore), Fusions (STAR fusion)
 
 ## ⚠️⚠️ work in process! ⚠️⚠️ ##
 
