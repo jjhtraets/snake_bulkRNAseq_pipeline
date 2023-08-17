@@ -71,6 +71,7 @@ Sample files should contain the column name "sample_ID".
 ### TODO
 - add slurm options
 - add docker for MiXCR/vdjtools
-- integrate trimming and STAR-fusion 
+- integrate trimming and STAR-fusion
+- integrate reference preparation STAR, RSEM and Kallisto
 - fix bam > fastq rules
 
