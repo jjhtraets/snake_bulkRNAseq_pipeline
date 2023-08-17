@@ -13,7 +13,7 @@ if config["bam_to_fastq_r"] == True:
 
     rule bam_to_fastq:  # Picard SamToFastq can split the paired and unpaired reads
         input:
-            config["inpu_folder"]["bam_files_folder"]+"/{sample}_namesorted.bam"
+            config["input_folder"]["bam_files_folder"]+"/{sample}_namesorted.bam"
         output:
             reads1out=config["input_folder"]+"/{sample}.1.fastq.gz",
             reads2out=config["input_folder"]+"/{sample}.2.fastq.gz",

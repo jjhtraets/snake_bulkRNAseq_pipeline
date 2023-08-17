@@ -1,58 +1,55 @@
 ################################################################################
 ##                          config file RNAseq pipeline                       ##
 ################################################################################
+# format name fastq files:
+# [sample_name][read_name].fastq.gz
 
 # set True or False
 run_modes:
   STAR: True
-  counts: False
+  counts: True
   kallisto: False
-  mixcr: True
+  RSEM: True
+  mixcr: False
   QCs: True
 
 # additional arguments for snakemake
-snakemake_arg: "-k"
-
-# format names fastq files:
-# [sample_name][read_name].fastq.gz
-
-# Sample names
-# sample_ID as header
+snakemake_arg: "-k" 
+ 
+# Sample names, sample_ID as header
 samples: "/DATA/j.traets/Pipelines/RNAseq_snakemake_pipeline_v2_1/paired_test.txt"
 
-# bam as input: True or False
-bam_to_fastq_r: False
-
-# read name, R1 + R2
-# or in case of single reads, R1 only
+# read name, R1 + R2, or in case of single reads, R1 only
 read_name:
   R1: ".1"
   R2: ".2"
-#_R1_001
-#_R2_001
+
+# input, location of the fastq files folder (all files located in one folder)
+input: "/DATA/j.traets/Pipelines/RNAseq_snakemake_pipeline_v2_1/test_input_output/test_data/paired_fastq"
+# output, location of the output folder
+output: "/DATA/j.traets/Pipelines/RNAseq_snakemake_pipeline_v2_1/test_input_output/output"
+
+# bam as input: True or False
+bam_to_fastq_r: False
 
 ## params tools ##
 STAR:
   threads: 10
   reference: "/DATA/j.traets/Reference_files/homo_sapiens/GRCh38_ensembl_105_primary/"
-  mode: "--twopassMode Basic --outReadsUnmapped None"
+  mode: "--twopassMode Basic --outReadsUnmapped None --quantMode TranscriptomeSAM"
   param_sam: "--chimSegmentMin 12 --chimJunctionOverhangMin 12 --alignSJDBoverhangMin 10 --alignMatesGapMax 100000 --alignIntronMax 100000 --chimSegmentReadGapMax parameter 3"
   other:  "--alignSJstitchMismatchNmax 5 -1 5 5 --limitBAMsortRAM 31532137230 --outSAMtype BAM SortedByCoordinate --readFilesCommand zcat --outSAMattributes NM"
-
 ngsderive:
   reference: "/DATA/j.traets/Reference_files/homo_sapiens/GRCh38_ensembl_105_primary/Homo_sapiens.GRCh38.105.gtf"
-
 HTSeq:
   reference: "/DATA/j.traets/Reference_files/homo_sapiens/GRCh38_ensembl_105_primary/Homo_sapiens.GRCh38.105.gtf"
   params: "-m intersection-nonempty -a 10"
-
 kallisto:
   threads: 10
   reference: "/DATA/j.traets/Reference_files/homo_sapiens/Kallisto_reference_hg38/homo_sapiens/transcriptome.idx"
-
-rsem:
-  python_folder: "/DATA/j.traets/Pipelines/RNAseq_snakemake_pipeline_v1_2/"
-
+RSEM:
+  threads: 10
+  reference: "/DATA/j.traets/Reference_files/homo_sapiens/GRCh38_ensembl_105_primary_rsem/GRCh38_105_rsem"
 MiXCR:
   jar_MiXCR: "/DATA/j.traets/Tools/MiXCR/mixcr.jar"
   jar_vdjtools: "/DATA/j.traets/Tools/vdjtools/vdjtools-1.2.1/vdjtools-1.2.1.jar"
@@ -67,5 +64,7 @@ SIF:
   ngsderive: "sif/ngsderive_v1.2.0_stjudecloud.sif" # ngsderive
   samtools: "sif/samtools_1.9_staphb.sif" # samtools
   STAR: "sif/star-aligner_2.7.9a_danielfsribeiro.sif" # STAR
-# sif containers can be changed manually
+  RSEM: "sif/rsem_1.3.1_biocontainers.sif" # RSEM
+  RSeQC: "sif/rsem_1.3.1_biocontainers.sif" # RSeQC
+  # sif containers can be changed manually
 

@@ -13,7 +13,7 @@ if __name__ == "__main__":
     print("fastqc_v0.11.9_cv8.sif already present")
   
   if (os.path.isfile("sif/htseq_v2.0.2_quay.sif")) == (not True):
-    os.system("singularity build sif/htseq_v2.0.2_quay.sif docker://quay.io/biocontainers/htseq:2.0.2")
+    os.system("singularity build sif/htseq_v2.0.2_quay.sif docker://quay.io/biocontainers/htseq:2.0.2--py37hfcd875c_0")
   else:
     print("htseq_v2.0.2_quay.sif already present")  
     
@@ -41,3 +41,13 @@ if __name__ == "__main__":
     os.system("singularity build sif/star-aligner_2.7.9a_danielfsribeiro.sif docker://danielfsribeiro/star-aligner:2.7.9a")
   else:
     print("star-aligner_2.7.9a_danielfsribeiro.sif already present")  
+    
+  if (os.path.isfile("sif/rsem_1.3.1_biocontainers.sif")) == (not True):
+    os.system("singularity build sif/rsem_1.3.1_biocontainers.sif docker://biocontainers/rsem:v1.3.1dfsg-1-deb_cv1")
+  else:
+    print("rsem_1.3.1_biocontainers.sif already present")  
+
+  if (os.path.isfile("sif/rseqc_5.0.1_biocontainers.sif")) == (not True):
+    os.system("singularity build sif/rseqc_5.0.1_biocontainers.sif docker://quay.io/biocontainers/rseqc:5.0.1--py39hf95cd2a_1")
+  else:
+    print("rseqc_5.0.1_biocontainers.sif already present")  
