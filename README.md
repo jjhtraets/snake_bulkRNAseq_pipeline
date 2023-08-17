@@ -1,19 +1,19 @@
 # RNAseq pipeline (snakemake)
 version v2.1 (singularity/conda)
-updated, June 2023
+last update, August 2023
 
 Input: paired end  reads, fastq or bam files, bulk RNAseq data.
-Output: Counts (STAR & HTSeq), TPM (Kallisto), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
+Output: Counts (STAR & HTSeq), expression (Kallisto & RSEM), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
 
 Input: single reads, fastq or bam files, RNAseq data.
 Output: Counts (STAR & HTSeq), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
 
 Optional, not integrated(!): Trimming (Trim Galore), Fusions (STAR fusion), TPM quantitative (RSEM)
 
-## work in process! See TODOs ##
+## ⚠️⚠️ work in process! ⚠️⚠️ ##
 
 ## Prepare sif containers
-- via `Buid_sif_containers.py` (default package versions used in RNAseq pipeline 23/06)
+- run `Buid_sif_containers.py` (default package versions used in RNAseq pipeline 23/06)
 - or build your own sif containers with selfbuild or pulled docker images
 
 
@@ -30,27 +30,22 @@ conda activate snakemake_run
 `config/config.yaml`
 4. run "Run_RNApipeline.py"
 ```bash
-  python Run_RNApipeline.py {fastq_folder} {output_folder}
+  python Run_RNApipeline.py
 ```
 
 ```bash
-  positional arguments:
-  input                 Location of the fastq files
-  output                Location of the output files
 
   options:
   -h, --help            show this help message and exit
   -c CORES, --cores CORES
                         Number of cores to be used (int) (default: 1)
-  -r {single,paired}, --reads {single,paired}
-                        Paired or single end (paired or single) (default: single)
   -b BAM, --bam BAM     Start with bam files as input (default: False) (default: False)
   -s {no,unknown,yes,reverse}, --strandedness {no,unknown,yes,reverse}
                         Strandedness (forward or reverse or unknown) (default: unknown)
 ```
 Example:
 ```bash
-python Run_RNApipeline.py $PATH_INPUT $PATH_OUTPUT -r paired -s yes
+python Run_RNApipeline.py $PATH_INPUT $PATH_OUTPUT -c 5 -s reverse
 ```
 
 ## Alternative: How to run without the Run_RNApipeline.py shell
@@ -68,6 +63,7 @@ snakemake --use-conda --use-singularity --singularity-args "-B $PATH_INPUT -B $P
 Sample files should contain the column name "sample_ID".
 
 ### Updates
+- August 2023, integrated RSEM and added more extensive QCs
 - June 2023, updated environments and added a python shell
 - October 2022, added TCR div with MiXCR and vdjtools
 - June 2022, added RSEM (direct TPM quantification) & STAR-fusion rules
@@ -75,6 +71,6 @@ Sample files should contain the column name "sample_ID".
 ### TODO
 - add slurm options
 - add docker for MiXCR/vdjtools
-- integrate trimming, RSEM and STAR-fusion 
+- integrate trimming and STAR-fusion 
 - fix bam > fastq rules
 
