@@ -3,10 +3,10 @@ version v2.1 (singularity/conda)
 last update, August 2023
 
 Input: paired end  reads, fastq or bam files, bulk RNAseq data.
-Output: Counts (STAR & HTSeq), expression (Kallisto & RSEM), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
+Output: Counts (STAR & HTSeq), expression (STAR, Kallisto & RSEM), QCs (NGSderive, fastqc & multiqc), TCR diversity (MiXCR & vdjtools).
 
 Input: single reads, fastq or bam files, RNAseq data.
-Output: Counts (STAR & HTSeq), QC (fastqc & multiqc), strandedness (NGSderive), TCR diversity (MiXCR & vdjtools).
+Output: Counts (STAR & HTSeq), QCs (NGSderive, fastqc & multiqc), TCR diversity (MiXCR & vdjtools).
 
 Optional, not integrated(!): Trimming (Trim Galore), Fusions (STAR fusion)
 
@@ -63,8 +63,7 @@ snakemake --use-conda --use-singularity --singularity-args "-B $PATH_INPUT -B $P
 Sample files should contain the column name "sample_ID". 
 
 ### Information on config/config.yaml
-"input_folder" in the `config/config/yaml` file locates the folder containing the fastq files.
-And "output_folder" locates the folder for the output files
+"input_folder" in the `config/config/yaml` file locates the folder containing the fastq files. And "output_folder" locates the folder for the output files. Setting the modes to True/False determines the output.
 
 ### Updates
 - August 2023, integrated RSEM and added more extensive QCs
