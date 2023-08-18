@@ -64,7 +64,8 @@ Sample files should contain the column name "sample_ID".
 
 ### Information on config/config.yaml
 "input_folder" in the `config/config/yaml` file locates the folder containing the fastq files.
-"output_folder" in the located the folder for the output files
+And "output_folder" locates the folder for the output files
+
 ### Updates
 - August 2023, integrated RSEM and added more extensive QCs
 - June 2023, updated environments and added a python shell
