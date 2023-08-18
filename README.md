@@ -60,7 +60,10 @@ snakemake --use-conda --use-singularity --singularity-args "-B $PATH_INPUT -B $P
 ```
 
 ### Sample file format 
-Sample files should contain the column name "sample_ID". "input_folder" in the `config/config/yaml` file locates the folder containing the fastq files.
+Sample files should contain the column name "sample_ID". 
+
+### Information on config/config.yaml
+"input_folder" in the `config/config/yaml` file locates the folder containing the fastq files.
 
 ### Updates
 - August 2023, integrated RSEM and added more extensive QCs
