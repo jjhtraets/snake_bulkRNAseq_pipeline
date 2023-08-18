@@ -22,10 +22,10 @@ if __name__ == "__main__":
   else:
     print("kallisto_v0.48.0_zlskidmore.sif already present")  
     
-  if (os.path.isfile("sif/multiqc_v1.8_staphb.sif")) == (not True):
-    os.system("singularity build sif/multiqc_v1.8_staphb.sif docker://staphb/multiqc:1.8")
+  if (os.path.isfile("sif/multiqc_v1.14_ewels.sif")) == (not True):
+    os.system("singularity build sif/multiqc_v1.14_ewels.sif docker://ewels/multiqc:v1.14")
   else:
-    print("multiqc_v1.8_staphb.sif already present")  
+    print("multiqc_v1.14_ewels.sif already present")  
 
   if (os.path.isfile("sif/ngsderive_v1.2.0_stjudecloud.sif")) == (not True):
     os.system("singularity build sif/ngsderive_v1.2.0_stjudecloud.sif docker://stjudecloud/ngsderive:1.2.0")

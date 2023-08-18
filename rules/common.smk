@@ -18,7 +18,7 @@ def output_rules_all():
     tpm_rsem  = expand(config["output_folder"] + "RSEM/{sample}.isoforms.results" ,sample=samples["sample_ID"]),
     tcr_div  = expand(config["output_folder"] + "MiXCR/converted.{sample}.txt" ,sample=samples["sample_ID"]),
     tpms = expand(config["output_folder"]+"TPMs/{sample}/abundance.tsv",sample=samples["sample_ID"]), 
-    rsem = expand(config["output_folder"]+"RSEM/{sample}",sample=samples["sample_ID"]), 
+    rsem = expand(config["output_folder"] + "RSEM/{sample}.genes.results",sample=samples["sample_ID"]), 
 
     modes = list()
     if config["reads"] == "paired":
@@ -55,20 +55,6 @@ def output_rules_all():
 
     return modes
 
-def multiqc_input():
-    input_folders = list()
-    fastqc_folder = config["output_folder"]+ "fastqc/"
-    input_folders.append(fastqc_folder)
-    if config["run_modes"]["STAR"] or config["run_modes"]["QCs"]:
-        star_folder = config["output_folder"]+ "STAR_mapped/"
-        ngs_folder = config["output_folder"]+ "ngsderive/"
-        input_folders.append([star_folder,ngs_folder])
-    if config["run_modes"]["counts"]:
-        counts_folder = config["output_folder"]+ "Counts/"
-        output_folder = config["output_folder"]+ "multiqc/"
-        input_folders.append([counts_folder,output_folder])
-        
-    return input_folders
     
     
     

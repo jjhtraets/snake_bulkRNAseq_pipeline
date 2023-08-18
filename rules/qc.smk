@@ -27,10 +27,12 @@ if config["reads"] == "paired":
         params:
             fastqc_folder = config["output_folder"]+ "fastqc/",
             star_folder = config["output_folder"]+ "STAR_mapped/",
-            ngs_folder = config["output_folder"]+ "ngsderive/"
+            ngs_folder = config["output_folder"]+ "ngsderive/",
+            output_folder = config["output_folder"] + "multiqc/",
+            star_bam = "*__STARpass1*"
         shell:
             """
-            multiqc {params.fastqc_folder} {params.star_folder} {params.ngs_folder} -o {params.output_folder} -n multiqc_report_QCs -f
+            multiqc {params.fastqc_folder} {params.star_folder} {params.ngs_folder} -o {params.output_folder} -n multiqc_report_QCs -f --ignore {params.star_bam}
             """
 
     rule multiqc_counts:
@@ -45,13 +47,15 @@ if config["reads"] == "paired":
         singularity: config["SIF"]["multiqc"]
         threads: 1
         params:
-            counts_folder = config["output_folder"]+ "Counts/"
+            counts_folder = config["output_folder"]+ "Counts/",
             fastqc_folder = config["output_folder"]+ "fastqc/",
             star_folder = config["output_folder"]+ "STAR_mapped/",
-            ngs_folder = config["output_folder"]+ "ngsderive/"
+            ngs_folder = config["output_folder"]+ "ngsderive/",
+            output_folder = config["output_folder"] + "multiqc/",
+            star_bam = "*__STARpass1*"
         shell:
             """
-            multiqc {params.counts_folder} {params.fastqc_folder} {params.star_folder} {params.ngs_folder} -o {params.output_folder} -n multiqc_report_counts_QCs -f
+            multiqc {params.counts_folder} {params.fastqc_folder} {params.star_folder} {params.ngs_folder} -o {params.output_folder} -n multiqc_report_counts_QCs -f --ignore {params.star_bam}
             """
             
 
