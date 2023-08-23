@@ -39,7 +39,7 @@ conda activate snakemake_run
   -h, --help            show this help message and exit
   -c CORES, --cores CORES
                         Number of cores to be used (int) (default: 1)
-  -b BAM, --bam BAM     Start with bam files as input (default: False) 
+  -b BAM, --bam BAM     Start with bam files as input (True or False) (default: False) 
   -s {no,unknown,yes,reverse}, --strandedness {no,unknown,yes,reverse}
                         Strandedness (forward or reverse or unknown) (default: unknown)
 ```
