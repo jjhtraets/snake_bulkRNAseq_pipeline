@@ -44,8 +44,7 @@ if config["reads"] == "paired":
         shell:
             """
             STAR --genomeDir {params.genome_dir} --readFilesIn {input.fastq1} {input.fastq2} {params.param1} \
-            {params.param2} {params.param3} --runThreadN {threads} --outFileNamePrefix {params.output_name} \
-            --quantMode TranscriptomeSAM 2> {log}
+            {params.param2} {params.param3} --runThreadN {threads} --outFileNamePrefix {params.output_name} 2> {log}
             """
 
 if config["reads"] == "single":

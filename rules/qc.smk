@@ -11,7 +11,7 @@ if config["reads"] == "paired":
             output_folder = config["output_folder"]+ "fastqc/"
         shell:
             """
-            fastqc -o {params.output_folder} -t {params.threads} {input.reads}
+            fastqc -o {params.output_folder} -t {threads} {input.reads}
             """
 
     rule multiqc_QCs:
