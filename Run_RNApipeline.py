@@ -101,6 +101,15 @@ def run_snakemake(yaml_config,config):
     log.info(bind_d3)
 
     logging.shutdown()
+    
+    # save log and config files to output folder
+    log_config = bind_d2+"/logs/"+file_path[:-4]
+    CHECK_FOLDER = os.path.isdir(log_config)
+    if not CHECK_FOLDER:
+        os.makedirs(log_config)
+    os.system("mv " + file_path + " " + log_config + "/" + file_path)
+    os.system("cp config/config.yaml " + log_config + "/")
+    os.system("cp var/config_user.yaml " + log_config + "/")
 
     if yaml_config["run_modes"]["kallisto"] == True and yaml_config["run_modes"]["RSEM"] == False:
         bind_d4 = yaml_config["kallisto"]["reference"]
@@ -113,6 +122,10 @@ def run_snakemake(yaml_config,config):
         bind_d4 = bind_d4.split("/")
         bind_d4.pop()
         bind_d4 = "/".join(bind_d4)
+        print(bind_d1)
+        print(bind_d2)
+        print(bind_d3)
+        print(bind_d4)
         os.system('snakemake --use-conda --use-singularity --singularity-args "-B ' + bind_d1 + ' -B ' + bind_d2 + ' -B ' + bind_d3 + ' -B ' + bind_d4 + ' " --cores '  + str(config["cores"]) + ' ' + str(yaml_config["snakemake_arg"]))
     if yaml_config["run_modes"]["RSEM"] == True and yaml_config["run_modes"]["kallisto"] == True:
         bind_d4 = yaml_config["kallisto"]["reference"]
